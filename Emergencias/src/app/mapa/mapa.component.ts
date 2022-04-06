@@ -1,8 +1,6 @@
-import { ViewEncapsulation } from '@angular/compiler';
 import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MapInfoWindow, MapMarker } from "@angular/google-maps";
 import { GoogleMap } from '@angular/google-maps';
-import { map } from 'rxjs';
 
 
 @Component({
@@ -14,6 +12,9 @@ export class MapaComponent implements OnInit {
 
   @ViewChildren(MapInfoWindow)
   infoWindowsView!: QueryList<MapInfoWindow>;
+
+  @ViewChild(GoogleMap)
+  googlemap: any;
   public markers: any[];
   public zoomapa: number;
   public centromapa: google.maps.LatLngLiteral;
@@ -61,13 +62,15 @@ export class MapaComponent implements OnInit {
   mostrarinfo(marker:MapMarker,windowIndex: number){
     
     let curIdx = 0;
-  this.infoWindowsView.forEach((window: MapInfoWindow) => {
-    if (windowIndex === curIdx) {
-      window.open(marker);
-      curIdx++;
-    } else {
-      curIdx++;
-    }
+    this.infoWindowsView.forEach((window: MapInfoWindow) => {
+
+      if (windowIndex === curIdx) {
+        window.open(marker);
+        curIdx++;
+      } else {
+        curIdx++;
+        window.close();
+      }
   });
     
   }

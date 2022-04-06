@@ -1,9 +1,8 @@
 
 <div>
-    <google-map   width="750px"
-    height="450px"
-    [zoom]="zoomapa"
-    [center]="centromapa" >   
+    <google-map   width="600"
+    height="450"
+    [center]="centromapa" [zoom]="zoomapa">   
 
     <map-marker *ngFor="let marker of markers;let i = index" #ElementMarker="mapMarker" [position]="marker.position" (mapClick)="mostrartexto(marker);mostrarinfo(ElementMarker,i)" (mapMouseover)="mostrarinfo(ElementMarker,i)">
         <map-info-window ><p>{{marker.label.text}}</p></map-info-window>
