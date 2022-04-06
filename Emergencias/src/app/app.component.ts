@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
 
   constructor() {
     this.markers = [];
-    this.zoom = 5;
+    this.zoom = 6;
     this.centromapa = centeromapa1;
     
   }
