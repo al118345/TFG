@@ -2,9 +2,11 @@
 <div>
     <google-map   width="750px"
     height="450px"
-    [zoom]="zoom"
-   [center]="centromapa">
-    <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label">
- 
+    [zoom]="zoomapa"
+    [center]="centromapa" >   
+
+    <map-marker *ngFor="let marker of markers;let i = index" #ElementMarker="mapMarker" [position]="marker.position" (mapClick)="mostrartexto(marker);mostrarinfo(ElementMarker,i)" (mapMouseover)="mostrarinfo(ElementMarker,i)">
+        <map-info-window ><p>{{marker.label.text}}</p></map-info-window>
     </map-marker>
+    
 </google-map></div>
