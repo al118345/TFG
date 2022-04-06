@@ -7,14 +7,14 @@
       "type": "pwa-chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://192.168.233.133/"
+      "url": "https://emergencias.dynamic-dns.net/"
     },
     {
       "name": "ng test",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: test",
-      "url": "http://192.168.233.133/debug.html"
+      "url": "https://emergencias.dynamic-dns.net/debug.html"
     }
   ]
 }

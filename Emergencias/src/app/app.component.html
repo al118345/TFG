@@ -434,6 +434,17 @@
       <pre *ngSwitchCase="'build'">ng build</pre>
   </div>
 
+  <div>
+    <span>MAPS</span>
+    <google-map  *ngFor="let centros of centromapa" width="750px"
+    height="450px"
+    [zoom]="zoom">
+    <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label">
+ 
+    </map-marker>
+</google-map></div>
+  
+
   <!-- Links -->
   <div class="card-container">
     <a class="circle-link" title="Find a Local Meetup" href="https://www.meetup.com/find/?keywords=angular" target="_blank" rel="noopener">
