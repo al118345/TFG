@@ -349,7 +349,7 @@
     </svg>
 
   </div>
-
+<app-mapa></app-mapa>
   <!-- Resources -->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
@@ -434,16 +434,7 @@
       <pre *ngSwitchCase="'build'">ng build</pre>
   </div>
 
-  <div>
-    <span>MAPS</span>
-    <google-map   width="750px"
-    height="450px"
-    [zoom]="zoom"
-   [center]="centromapa">
-    <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label">
  
-    </map-marker>
-</google-map></div>
   
 
   <!-- Links -->

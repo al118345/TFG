@@ -10,47 +10,18 @@ const centeromapa1: google.maps.LatLngLiteral = {lat: 40.4381311, lng: -3.819623
 })
 
 
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'Emergencias';
-  public markers: any[];
-  public zoom: number;
-  public centromapa: any;
+
 
 
 
   constructor() {
-    this.markers = [];
-    this.zoom = 6;
-    this.centromapa = centeromapa1;
+    
     
   }
 
-  
-
-  ngOnInit() {
        
-    this.markers.push({
-      
-      position: {
-        lat: 40.4381311,
-        lng: -3.8196233
-      },
-      label: {
-        color: "black",
-        text: "Madrid"
-      }
-    });
- 
-    this.markers.push({
-      
-      position: {
-        lat: 36.72314249921822, lng: -4.421610174606653
-      },
-      label: {
-        color: "black",
-        text: "Málaga"
-      }
-    });
-  }
+    
 
 }
