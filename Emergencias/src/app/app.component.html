@@ -436,9 +436,10 @@
 
   <div>
     <span>MAPS</span>
-    <google-map  *ngFor="let centros of centromapa" width="750px"
+    <google-map   width="750px"
     height="450px"
-    [zoom]="zoom">
+    [zoom]="zoom"
+   [center]="centromapa">
     <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label">
  
     </map-marker>
