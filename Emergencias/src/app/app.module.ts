@@ -5,13 +5,15 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
+import { ResidenciainfoComponent } from './residenciainfo/residenciainfo.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapaComponent
+    MapaComponent,
+    ResidenciainfoComponent
   ],
   imports: [
     BrowserModule,

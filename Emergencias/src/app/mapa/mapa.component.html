@@ -1,11 +1,23 @@
-
-<div>
-    <google-map   width="600"
-    height="450"
+<div  flex>
+    <google-map class="col-lg-12 col-md-12 "
     [center]="centromapa" [zoom]="zoomapa">   
 
     <map-marker *ngFor="let marker of markers;let i = index" #ElementMarker="mapMarker" [position]="marker.position" (mapClick)="mostrartexto(marker);mostrarinfo(ElementMarker,i)" (mapMouseover)="mostrarinfo(ElementMarker,i)">
         <map-info-window ><p>{{marker.label.text}}</p></map-info-window>
     </map-marker>
     
-</google-map></div>
+</google-map></div><!--
+<div class="map-container">
+
+    <div class="map-frame">
+  
+      <div id="map"></div>
+  
+    </div>
+  
+  </div>
+-->
+
+
+
+
