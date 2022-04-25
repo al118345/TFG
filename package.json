@@ -1,5 +1,11 @@
 {
   "dependencies": {
-    "@angular/google-maps": "^13.3.2"
+    "@angular/google-maps": "^13.3.2",
+    "leaflet": "^1.8.0",
+    "leaflet-routing-machine": "^3.2.12"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.7.9",
+    "@types/leaflet-routing-machine": "^3.2.3"
   }
 }

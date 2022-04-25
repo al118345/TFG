@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "src/app/service/leaflet.service"
+           ],
             "outputPath": "dist/emergencias",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,7 +28,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/node_modules/leaflet/dist/images/"
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "src/styles.css",
@@ -47,8 +54,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 }
               ],
               "fileReplacements": [

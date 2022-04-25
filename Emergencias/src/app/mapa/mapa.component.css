@@ -170,3 +170,19 @@
 .opacity-0 {
   opacity: 0 !important;
 }
+
+.map-container {
+
+}
+ 
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+ 
+#map {
+  height: 610px;
+  width: 100%;
+  position: relative;
+
+}
