@@ -1,33 +1,29 @@
 <div class="col-md-12 container pb-5 pt-5">                  
     <div class="col-md-12 row"> 
         <div class="pb-3 pt-3"> 
-            <div class="bg-light col-md-12 d-block pb-5 pe-4 ps-4 pt-5 shadow">
+            <div class="bg-light col-md-12 d-block pb-5 pe-4 ps-4 pt-5 shadow" *ngFor="let item of Residencia">
                 <h2 class="col-md-12 fw-bold h2 text-dark">Datos Residencia</h2>
-                <p class="col-md-12">Los datos fueron actualizados .</p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3>ID</h3>
-                        <output></output>                                     
-                    </div>
+                <p class="col-md-12">Los datos fueron actualizados {{item.UltActData}} .</p>
+                <div class="row" >
                     <div class="col-md-6">
                         <h3>Nombre</h3>
-                        <output></output>                                     
+                        <output>{{item.Denominacion}}</output>                                     
                     </div>
                     <div class="col-md-6">
                         <h3>Teléfono</h3>
-                        <output></output>                                     
+                        <output>{{item.Telefono}}</output>                                     
                     </div>
                     <div class="col-md-6">
                         <h3>URL</h3>
-                        <output></output>                                     
+                        <output>{{item.URL}}</output>                                     
                     </div>
                     <div class="col-md-6">
                         <h3>Municipio</h3>
-                        <output></output>                                     
+                        <output>{{item.Municipio}}</output>                                     
                     </div>
                     <div class="col-md-6">
                         <h3>Propiedad</h3>
-                        <output></output>                                     
+                        <output>{{item.Titularidad}}</output>                                     
                     </div>
                 </div>
                 <ul>                                  
@@ -37,7 +33,10 @@
                         </svg>                                    List item
                     </li>
                 </ul>
+                
             </div>                         
         </div>                                                                                    
     </div>                 
 </div>     
+<div>  
+</div>

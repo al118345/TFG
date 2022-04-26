@@ -112,8 +112,8 @@ export class MapaComponent implements OnInit {
   }*/
   import {LeafletService} from "src/app/service/leaflet.service";
 
-  import { Component, Input, OnInit } from '@angular/core';
-
+  import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+  import { ResidenciainfoService } from '../residenciainfo/residenciainfo.service';
 
 
   export const DEFAULT_LAT =  40.4381311;
@@ -132,11 +132,12 @@ export class MapaComponent implements OnInit {
     @Input() lon: number = DEFAULT_LON;
     @Input() titulo: string = TITULO ;
    
+  
     public latloc: any;
     public lngloc: any;
   
-    constructor(private mapService: LeafletService) {
-      
+    constructor(private mapService: LeafletService,private ResidenciainfoService: ResidenciainfoService) {
+     
     }
     ngOnInit(): void {
       if (this.mapService.L) {
@@ -145,9 +146,9 @@ export class MapaComponent implements OnInit {
     }
 
     public Residencias: Array<any> = [
-    {Denominacion:"Residencia de ancianos Nuestra Señora de las Mercedes", Direccion:"Calle Granada 13",CP:"29530",Telefono:"952710029",Titularidad:"Privada sin lucro",Plazas:"24",URL:"", UltActData:"03/04/2019", Email:"", Lat:37.207588, Lng:-4.657316},
-    {Denominacion:"Centro Residencial Fuente Ariza", Direccion:"Calle Los Llanos 39 ",CP:"29750",Telefono:"952552530",Titularidad:"Privada",Plazas:"40",URL:"www.residenciafuenteariza.com/", UltActData:"01/12/2020", Email:"",Lat:36.770716, Lng:-4.047478},
-    {Denominacion:"Centro Residencial para mayores El Romeral", Direccion:"Calle Carril de Zamorrilla 31 - Bª El Romeral ",CP:"29130",Telefono:"662475867",Titularidad:"Privada",Plazas:"17",URL:"", UltActData:"01/12/2020", Email:"", Lat:36.681981, Lng:-4.568648}
+    {Denominacion:"Residencia de ancianos Nuestra Señora de las Mercedes", Direccion:"Calle Granada 13",Municipio:"Alameda",CP:"29530",Telefono:"952710029",Titularidad:"Privada sin lucro",Plazas:"24",URL:"", UltActData:"03/04/2019", Email:"", Lat:37.207588, Lng:-4.657316},
+    {Denominacion:"Centro Residencial Fuente Ariza", Direccion:"Calle Los Llanos 39 ",CP:"29750",Telefono:"952552530",Municipio:"Algarrobo",Titularidad:"Privada",Plazas:"40",URL:"www.residenciafuenteariza.com/", UltActData:"01/12/2020", Email:"",Lat:36.770716, Lng:-4.047478},
+    {Denominacion:"Centro Residencial para mayores El Romeral", Direccion:"Calle Carril de Zamorrilla 31 - Bª El Romeral ",Municipio:"Alahurín de la Torre",CP:"29130",Telefono:"662475867",Titularidad:"Privada",Plazas:"17",URL:"", UltActData:"01/12/2020", Email:"", Lat:36.681981, Lng:-4.568648}
     ];
     
 
@@ -190,10 +191,13 @@ export class MapaComponent implements OnInit {
         const marker = this.mapService.L.marker([lat + 0.005, lon + 0.005]).bindPopup(this.titulo);
         marker.addTo(this.map);
 
+
+        //Creamos una marcaa para cada residencia y agregamos la funcion a realizar en el click.
         this.Residencias.forEach(element => {
           console.log(this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion));
-          this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion).addTo(this.map).on('click',function(e: { latlng: any; }) {
-            console.log(element.Denominacion);});
+          this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion).addTo(this.map).on('click',(e: { latlng: any; }) => {
+            this.ResidenciainfoService.toggle();
+          console.log(element);});
         });
 
       const mark = this.mapService.L.circleMarker([this.lat, this.lon]).addTo(this.map);

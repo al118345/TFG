@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { ResidenciainfoComponent } from './residenciainfo/residenciainfo.component';
+import { ResidenciainfoService } from './residenciainfo/residenciainfo.service';
 
 
 
@@ -20,7 +21,7 @@ import { ResidenciainfoComponent } from './residenciainfo/residenciainfo.compone
     AppRoutingModule,
     GoogleMapsModule,
   ],
-  providers: [],
+  providers: [ResidenciainfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
