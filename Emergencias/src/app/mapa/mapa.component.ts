@@ -116,9 +116,9 @@ export class MapaComponent implements OnInit {
 
 
 
-  export const DEFAULT_LAT = 48.20807;
-  export const DEFAULT_LON =  16.37320;
-  export const TITULO = 'Emergencias';
+  export const DEFAULT_LAT =  40.4381311;
+  export const DEFAULT_LON =  -3.8196233;
+  export const TITULO = 'Residencia XXXXXX';
    
   
   @Component({
@@ -132,15 +132,28 @@ export class MapaComponent implements OnInit {
     @Input() lon: number = DEFAULT_LON;
     @Input() titulo: string = TITULO ;
    
-   
+    public latloc: any;
+    public lngloc: any;
+  
     constructor(private mapService: LeafletService) {
+      
     }
     ngOnInit(): void {
       if (this.mapService.L) {
           this.initMap();
       }
     }
-      
+
+    public Residencias: Array<any> = [
+    {Denominacion:"Residencia de ancianos Nuestra Señora de las Mercedes", Direccion:"Calle Granada 13",CP:"29530",Telefono:"952710029",Titularidad:"Privada sin lucro",Plazas:"24",URL:"", UltActData:"03/04/2019", Email:"", Lat:37.207588, Lng:-4.657316},
+    {Denominacion:"Centro Residencial Fuente Ariza", Direccion:"Calle Los Llanos 39 ",CP:"29750",Telefono:"952552530",Titularidad:"Privada",Plazas:"40",URL:"www.residenciafuenteariza.com/", UltActData:"01/12/2020", Email:"",Lat:36.770716, Lng:-4.047478},
+    {Denominacion:"Centro Residencial para mayores El Romeral", Direccion:"Calle Carril de Zamorrilla 31 - Bª El Romeral ",CP:"29130",Telefono:"662475867",Titularidad:"Privada",Plazas:"17",URL:"", UltActData:"01/12/2020", Email:"", Lat:36.681981, Lng:-4.568648}
+    ];
+    
+
+   public hola(): void{
+     console.log("Leoclick");
+   }
    
     private initMap(): void {
       var iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -162,29 +175,35 @@ export class MapaComponent implements OnInit {
         this.map =  this.mapService.L.map('map', {
           center: [this.lat, this.lon],
           attributionControl: false,
-          zoom: 14
+          zoom: 6
         });
+        
    
         const tiles = this.mapService.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
           attribution: '&copy; <a href="https://emergencias.dynamic-dns.net/">Web Inteligencia Artificial</a>'
         });
-        //const marker = L.marker([this.lat, this.lon]);
-        //marker.addTo(this.map);
+        
    
         const lon = this.lon + 0.009;
         const lat = this.lat + 0.009;
         const marker = this.mapService.L.marker([lat + 0.005, lon + 0.005]).bindPopup(this.titulo);
         marker.addTo(this.map);
-   
-        const mark = this.mapService.L.circleMarker([this.lat, this.lon]).addTo(this.map);
-        mark.bindPopup(this.titulo);
-        mark.addTo(this.map);
+
+        this.Residencias.forEach(element => {
+          console.log(this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion));
+          this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion).addTo(this.map).on('click',function(e: { latlng: any; }) {
+            console.log(element.Denominacion);});
+        });
+
+      const mark = this.mapService.L.circleMarker([this.lat, this.lon]).addTo(this.map);
+      mark.bindPopup(this.titulo);
+      mark.addTo(this.map);
    
        const mark2 = this.mapService.L.circleMarker([lat, lon]).addTo(this.map);
         mark2.addTo(this.map);
    
-   
+      
    
       this.mapService.L.Routing.control({
         router: this.mapService.L.Routing.osrmv1({
@@ -201,6 +220,8 @@ export class MapaComponent implements OnInit {
       }).addTo(this.map);
    
         tiles.addTo(this.map);
-   
+      
+
       }
+      
     }
