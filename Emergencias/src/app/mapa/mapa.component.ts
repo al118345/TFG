@@ -197,6 +197,7 @@ export class MapaComponent implements OnInit {
           console.log(this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion));
           this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion).addTo(this.map).on('click',(e: { latlng: any; }) => {
             this.ResidenciainfoService.toggle();
+            this.ResidenciainfoService.actualresi(element);
           console.log(element);});
         });
 
