@@ -111,10 +111,12 @@ export class MapaComponent implements OnInit {
     
   }*/
   import {LeafletService} from "src/app/service/leaflet.service";
+  import { ApiService } from '../api.service';
 
   import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   import { ResidenciainfoService } from '../residenciainfo/residenciainfo.service';
 
+  import { Residencia } from '../model/residencia';
 
   export const DEFAULT_LAT =  40.4381311;
   export const DEFAULT_LON =  -3.8196233;
@@ -136,7 +138,9 @@ export class MapaComponent implements OnInit {
     public latloc: any;
     public lngloc: any;
   
-    constructor(private mapService: LeafletService,private ResidenciainfoService: ResidenciainfoService) {
+    residencias!: Residencia[];
+
+    constructor(private apiService: ApiService,private mapService: LeafletService,private ResidenciainfoService: ResidenciainfoService) {
      
     }
     ngOnInit(): void {
@@ -144,13 +148,13 @@ export class MapaComponent implements OnInit {
           this.initMap();
       }
     }
-
+/*
     public Residencias: Array<any> = [
     {Denominacion:"Residencia de ancianos Nuestra Señora de las Mercedes", Direccion:"Calle Granada 13",Municipio:"Alameda",CP:"29530",Telefono:"952710029",Titularidad:"Privada sin lucro",Plazas:"24",URL:"", UltActData:"03/04/2019", Email:"", Lat:37.207588, Lng:-4.657316},
     {Denominacion:"Centro Residencial Fuente Ariza", Direccion:"Calle Los Llanos 39 ",CP:"29750",Telefono:"952552530",Municipio:"Algarrobo",Titularidad:"Privada",Plazas:"40",URL:"www.residenciafuenteariza.com/", UltActData:"01/12/2020", Email:"",Lat:36.770716, Lng:-4.047478},
     {Denominacion:"Centro Residencial para mayores El Romeral", Direccion:"Calle Carril de Zamorrilla 31 - Bª El Romeral ",Municipio:"Alahurín de la Torre",CP:"29130",Telefono:"662475867",Titularidad:"Privada",Plazas:"17",URL:"", UltActData:"01/12/2020", Email:"", Lat:36.681981, Lng:-4.568648}
     ];
-    
+*/
 
    public hola(): void{
      console.log("Leoclick");
@@ -192,14 +196,18 @@ export class MapaComponent implements OnInit {
         marker.addTo(this.map);
 
 
-        //Creamos una marcaa para cada residencia y agregamos la funcion a realizar en el click.
-        this.Residencias.forEach(element => {
-          console.log(this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion));
-          this.mapService.L.marker([element.Lat,element.Lng]).bindPopup(element.Denominacion).addTo(this.map).on('click',(e: { latlng: any; }) => {
+        this.apiService.searchResidencias().subscribe((residencias: Residencia[]) => {
+          this.residencias = residencias;
+       //Creamos una marcaa para cada residencia y agregamos la funcion a realizar en el click.
+       console.log(this.residencias);/*
+        this.residencias.forEach((element: Residencia) => {
+          console.log(element);
+          this.mapService.L.marker([element.Latitud,element.Longitud]).bindPopup(element.Denominacion).addTo(this.map).on('click',(e: { latlng: any; }) => {
             this.ResidenciainfoService.toggle();
             this.ResidenciainfoService.actualresi(element);
           console.log(element);});
-        });
+        });*/
+      });
 
       const mark = this.mapService.L.circleMarker([this.lat, this.lon]).addTo(this.map);
       mark.bindPopup(this.titulo);

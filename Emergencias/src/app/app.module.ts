@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { ResidenciainfoComponent } from './residenciainfo/residenciainfo.component';
 import { ResidenciainfoService } from './residenciainfo/residenciainfo.service';
+import { ApiService } from './api.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,8 +22,9 @@ import { ResidenciainfoService } from './residenciainfo/residenciainfo.service';
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
+    HttpClientModule
   ],
-  providers: [ResidenciainfoService],
+  providers: [ResidenciainfoService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
