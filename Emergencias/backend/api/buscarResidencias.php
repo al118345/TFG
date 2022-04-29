@@ -1,7 +1,6 @@
 <?php
 
-phpinfo()
-/*
+
 require 'database.php';
 
 $postdata = file_get_contents("php://input");
@@ -11,7 +10,7 @@ $request = json_decode($postdata);
 
 
 $residencias = [];
-$sql = "SELECT * FROM Residencias";
+$sql = "SELECT * FROM Residencia";
 date_default_timezone_set('Europe/Madrid');
 $fecha = date("Y-m-d H:i:s");
 if($result = mysqli_query($con,$sql))
@@ -45,5 +44,3 @@ else
   http_response_code(404);
 }
 
-*/
-?>;
