@@ -117,6 +117,7 @@ export class MapaComponent implements OnInit {
   import { ResidenciainfoService } from '../residenciainfo/residenciainfo.service';
 
   import { Residencia } from '../model/residencia';
+import { ResidenciainfoComponent } from "../residenciainfo/residenciainfo.component";
 
   export const DEFAULT_LAT =  40.4381311;
   export const DEFAULT_LON =  -3.8196233;
@@ -133,7 +134,6 @@ export class MapaComponent implements OnInit {
     @Input() lat: number = DEFAULT_LAT;
     @Input() lon: number = DEFAULT_LON;
     @Input() titulo: string = TITULO ;
-   
   
     public latloc: any;
     public lngloc: any;
@@ -199,14 +199,13 @@ export class MapaComponent implements OnInit {
         this.apiService.searchResidencias().subscribe((residencias: Residencia[]) => {
           this.residencias = residencias;
        //Creamos una marcaa para cada residencia y agregamos la funcion a realizar en el click.
-       console.log(this.residencias);/*
+     
         this.residencias.forEach((element: Residencia) => {
-          console.log(element);
+      
           this.mapService.L.marker([element.Latitud,element.Longitud]).bindPopup(element.Denominacion).addTo(this.map).on('click',(e: { latlng: any; }) => {
-            this.ResidenciainfoService.toggle();
-            this.ResidenciainfoService.actualresi(element);
-          console.log(element);});
-        });*/
+            this.ResidenciainfoService.toggle(element);
+          });
+        });
       });
 
       const mark = this.mapService.L.circleMarker([this.lat, this.lon]).addTo(this.map);

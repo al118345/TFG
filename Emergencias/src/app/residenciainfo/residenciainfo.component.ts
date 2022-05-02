@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import * as internal from 'stream';
 import { ResidenciainfoService } from './residenciainfo.service';
 
 @Component({
@@ -8,25 +9,24 @@ import { ResidenciainfoService } from './residenciainfo.service';
 })
 export class ResidenciainfoComponent implements OnInit {
 
-  public Residencia: any;
-
+  Residencia: any;
   constructor( private ResidenciainfoService: ResidenciainfoService) {
   
    }
 
   @HostBinding('class.is-open')
-  
   isOpen = false;
 
+
   ngOnInit(): void {
-    this.ResidenciainfoService.change.subscribe(isOpen => {
+    this.ResidenciainfoService.change.subscribe(isOpen =>{
       this.isOpen = isOpen;
-      
     });
+
     this.ResidenciainfoService.change.subscribe(residencia =>{
-    this.Residencia = residencia;
+      this.Residencia = residencia;
     });
-    
+  
   }
 
   

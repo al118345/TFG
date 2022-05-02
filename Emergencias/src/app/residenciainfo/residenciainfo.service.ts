@@ -1,19 +1,19 @@
 import { Injectable, Output, EventEmitter } from '@angular/core'
+import { Residencia } from '../model/residencia';
 
 @Injectable()
 export class ResidenciainfoService {
 
-  isOpen = false;
-    residencia: any;
+residencia: any;
+  
+isOpen = false;
 
   @Output() change: EventEmitter<boolean> = new EventEmitter();
 
-  toggle() {
+  toggle(residencia:any) {
     this.isOpen = !this.isOpen;
-    this.change.emit(this.isOpen);
-  }
-  actualresi(residencia:any){
     this.residencia = residencia;
+    this.change.emit(this.isOpen);
     this.change.emit(this.residencia);
   }
 
