@@ -10,7 +10,7 @@ $request = json_decode($postdata);
 
 
 $residencias = [];
-$sql = "SELECT * FROM Residencia;";
+$sql = "SELECT * FROM Residencia ORDER BY Denominacion;";
 date_default_timezone_set('Europe/Madrid');
 $fecha = date("Y-m-d H:i:s");
 if($result = mysqli_query($con,$sql))

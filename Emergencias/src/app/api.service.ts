@@ -21,4 +21,12 @@ export class ApiService {
     return this.httpClient.post(`${this.PHP_API_SERVER}/api/buscarResidencias.php`, {
     }, options); 
   }
+
+  searchResidenciasOrder():any {
+    const headers = {}
+    let options = { headers: headers };
+
+    return this.httpClient.post(`${this.PHP_API_SERVER}/api/buscarResidenciasOrder.php`, {
+    }, options); 
+  }
 }

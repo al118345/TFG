@@ -15,6 +15,9 @@ import { MenuComponent } from './menu/menu.component';
 import { HeaderComponent } from './header/header.component';
 import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaginatePipe } from './paginate.pipe';
 
 
 
@@ -27,14 +30,17 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     MenuComponent,
     HeaderComponent,
-    FilterPipe
+    FilterPipe,
+    PaginatePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule 
   ],
   providers: [ResidenciainfoService, ApiService],
   bootstrap: [AppComponent]
