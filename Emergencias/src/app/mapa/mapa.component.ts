@@ -121,7 +121,7 @@ import { ResidenciainfoComponent } from "../residenciainfo/residenciainfo.compon
 
   export const DEFAULT_LAT =  40.4381311;
   export const DEFAULT_LON =  -3.8196233;
-  export const TITULO = 'Residencia XXXXXX';
+ // export const TITULO = 'Residencia XXXXXX';
    
   
   @Component({
@@ -133,7 +133,7 @@ import { ResidenciainfoComponent } from "../residenciainfo/residenciainfo.compon
     private map:any;
     @Input() lat: number = DEFAULT_LAT;
     @Input() lon: number = DEFAULT_LON;
-    @Input() titulo: string = TITULO ;
+    //@Input() titulo: string = TITULO ;
   
     public latloc: any;
     public lngloc: any;
@@ -190,11 +190,11 @@ import { ResidenciainfoComponent } from "../residenciainfo/residenciainfo.compon
         });
         
    
-        const lon = this.lon + 0.009;
+        /*const lon = this.lon + 0.009;
         const lat = this.lat + 0.009;
         const marker = this.mapService.L.marker([lat + 0.005, lon + 0.005]).bindPopup(this.titulo);
         marker.addTo(this.map);
-
+        */
 
         this.apiService.searchResidencias().subscribe((residencias: Residencia[]) => {
           this.residencias = residencias;
@@ -208,6 +208,7 @@ import { ResidenciainfoComponent } from "../residenciainfo/residenciainfo.compon
         });
       });
 
+      /*  
       const mark = this.mapService.L.circleMarker([this.lat, this.lon]).addTo(this.map);
       mark.bindPopup(this.titulo);
       mark.addTo(this.map);
@@ -230,7 +231,7 @@ import { ResidenciainfoComponent } from "../residenciainfo/residenciainfo.compon
           this.mapService.L.latLng(lat, lon)
         ]
       }).addTo(this.map);
-   
+   */
         tiles.addTo(this.map);
       
 

@@ -24,7 +24,7 @@ export class AppComponent{
    
     
   }
- 
+ /*
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -42,6 +42,6 @@ export class AppComponent{
       alert("Geolocation is not supported by this browser.");
     }
   }
-    
+    */
 
 }

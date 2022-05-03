@@ -9,6 +9,12 @@ import { ResidenciainfoComponent } from './residenciainfo/residenciainfo.compone
 import { ResidenciainfoService } from './residenciainfo/residenciainfo.service';
 import { ApiService } from './api.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ListadoComponent } from './listado/listado.component';
+import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
+import { HeaderComponent } from './header/header.component';
+import { FilterPipe } from './filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,13 +22,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     MapaComponent,
-    ResidenciainfoComponent
+    ResidenciainfoComponent,
+    ListadoComponent,
+    FooterComponent,
+    MenuComponent,
+    HeaderComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ResidenciainfoService, ApiService],
   bootstrap: [AppComponent]
