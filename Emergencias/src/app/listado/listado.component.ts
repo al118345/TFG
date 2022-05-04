@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Residencia } from '../model/residencia';
 import { PageEvent } from '@angular/material/paginator';
-import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-listado',
@@ -16,7 +17,7 @@ export class ListadoComponent implements OnInit {
   page_size: number = 25;
   page_number = 1;
   
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.apiService.searchResidenciasOrder().subscribe((residencias: Residencia[]) => {

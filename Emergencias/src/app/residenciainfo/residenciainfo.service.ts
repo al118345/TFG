@@ -15,6 +15,7 @@ isOpen = false;
     this.residencia = residencia;
     this.change.emit(this.isOpen);
     this.change.emit(this.residencia);
+    console.log("toggle");
   }
 
 }

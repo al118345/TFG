@@ -11,7 +11,6 @@ import { ApiService } from './api.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ListadoComponent } from './listado/listado.component';
 import { FooterComponent } from './footer/footer.component';
-import { MenuComponent } from './menu/menu.component';
 import { HeaderComponent } from './header/header.component';
 import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +27,6 @@ import { PaginatePipe } from './paginate.pipe';
     ResidenciainfoComponent,
     ListadoComponent,
     FooterComponent,
-    MenuComponent,
     HeaderComponent,
     FilterPipe,
     PaginatePipe
@@ -40,7 +38,7 @@ import { PaginatePipe } from './paginate.pipe';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatPaginatorModule 
+    MatPaginatorModule
   ],
   providers: [ResidenciainfoService, ApiService],
   bootstrap: [AppComponent]

@@ -13,43 +13,15 @@
     <link href="app.component.css" rel="stylesheet"/>
     </head>
     <body>
-        <header>
-            <app-header></app-header>
-        </header>
-        <section class="bg-light pt-5 text-secondary">
-            <h1 class="display-4 fw-bold mb-3 text-center text-dark">Mapa Residencias</h1>
-            <div class=" bg-white mb-n5 p-3 shadow" style="position: relative;">
-                <app-mapa></app-mapa>
-</div>
-
-            <div class="container">
-                <div class="align-items-center row">
-                    <div class="col-lg-6 mb-5">
-                        <p class="fw-light lead mb-4">Información del mapa</p><a href="#" onclick = "getLocation()" class="btn btn-primary">Mi Ubicación</a>
-                    </div>
-                    <div class="col-lg-6">
-</div>
-                </div>
-            </div>
-        </section>
-        <section class="pb-5 pt-5 text-secondary"> 
-                <app-residenciainfo></app-residenciainfo>    
-        </section>
-        <section> 
-            <div class="container"> 
-</div>             
-        </section>
-        <section><app-listado></app-listado></section>
-        <section> 
-            <div class="container"> 
-</div>             
-        </section>
-        <section class="pb-5 pt-5 text-center text-secondary">              
-</section>
-        <footer class="bg-primary pt-5 text-white"> 
-            <app-footer></app-footer>
-        </footer>
+        
+        <app-header></app-header>
+        <app-mapa></app-mapa>
+        <app-residenciainfo></app-residenciainfo>
+       <router-outlet></router-outlet>
+        <app-footer></app-footer>
         <script src="assets/js/popper.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
     </body>
+  
+    
 </html>
